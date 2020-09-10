@@ -19,6 +19,8 @@
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
     <flyway.version>5.0.7</flyway.version>
     <mssql-jdbc.version>7.4.1.jre11</mssql-jdbc.version>
+    <lombok.version>1.16.22</lombok.version>
+    <h2database.version>1.4.200</h2database.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -33,12 +35,29 @@
   </dependencyManagement>
   <dependencies>
       <dependency>
+          <groupId>org.projectlombok</groupId>
+          <artifactId>lombok</artifactId>
+          <scope>provided</scope>
+          <optional>true</optional>
+          <version>${lombok.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>com.h2database</groupId>
+          <artifactId>h2</artifactId>
+          <version>${h2database.version}</version>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
           <groupId>io.quarkus</groupId>
           <artifactId>quarkus-core</artifactId>
       </dependency>
       <dependency>
           <groupId>io.quarkus</groupId>
           <artifactId>quarkus-hibernate-orm</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>io.quarkus</groupId>
+          <artifactId>quarkus-resteasy-jsonb</artifactId>
       </dependency>
       <dependency>
           <groupId>io.quarkus</groupId>
@@ -64,6 +83,11 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-junit5</artifactId>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-junit5-mockito</artifactId>
+        <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>io.rest-assured</groupId>

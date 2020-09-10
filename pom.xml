@@ -17,6 +17,8 @@
     <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
     <quarkus.platform.version>1.7.2.Final</quarkus.platform.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+    <flyway.version>5.0.7</flyway.version>
+    <mssql-jdbc.version>7.4.1.jre11</mssql-jdbc.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -99,6 +101,20 @@
           </systemPropertyVariables>
         </configuration>
       </plugin>
+      <plugin>
+          <groupId>org.flywaydb</groupId>
+          <artifactId>flyway-maven-plugin</artifactId>
+          <version>${flyway.version}</version>
+          <configuration>
+          </configuration>
+          <dependencies>
+              <dependency>
+                  <groupId>com.microsoft.sqlserver</groupId>
+                  <artifactId>mssql-jdbc</artifactId>
+                  <version>${mssql-jdbc.version}</version>
+              </dependency>
+          </dependencies>
+      </plugin>
     </plugins>
   </build>
   <profiles>
@@ -135,6 +151,17 @@
       <properties>
         <quarkus.package.type>native</quarkus.package.type>
       </properties>
+    </profile>
+    <profile>
+        <id>local</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+        <properties>
+            <flyway.user>sa</flyway.user>
+            <flyway.password>welcome1#</flyway.password>
+            <flyway.url><![CDATA[jdbc:sqlserver://localhost:1433]]></flyway.url>
+        </properties>
     </profile>
   </profiles>
 </project>

@@ -2,11 +2,6 @@
 version: '2'
 
 services:
-  redis.spad:
-    image: "docker.artifact-dev.ark.bb.local/labo/redis:5.0.5"
-    container_name: redis.recipe
-    ports:
-      - "6379:6379"
   mssql.spad:
     image: "docker.artifact-dev.ark.bb.local/labo/mssql:2017-CU14"
     container_name: mssql.recipe

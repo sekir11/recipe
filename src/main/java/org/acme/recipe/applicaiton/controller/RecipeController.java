@@ -25,16 +25,15 @@ public class RecipeController {
   private RecipeService recipeService;
 
   /**
+   * 指定した id のレシピを取得するためのエンドポイントです。
    *
-   *
-   * @param recipeId
-   * @return
+   * @param recipeId 取得したいレシピの id
+   * @return 取得したレシピ
    */
   @GET
   @Path("/{id}")
   @Produces(MediaType.APPLICATION_JSON)
   public RecipeResponse getRecipe(@PathParam("id") String recipeId) {
-    System.out.println("111111111111111111111");
     Recipe recipe = recipeService.getRecipe(1);
     return RecipeResponse.of(recipe);
   }

@@ -25,7 +25,7 @@ public class RecipeController {
   private RecipeService recipeService;
 
   /**
-   * 指定した id のレシピを取得するためのエンドポイントです。
+   * 指定した id のレシピを取得するためのエンドポイントです!
    *
    * @param recipeId 取得したいレシピの id
    * @return 取得したレシピ

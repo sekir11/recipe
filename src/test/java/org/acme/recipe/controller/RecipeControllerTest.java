@@ -2,11 +2,13 @@ package org.acme.recipe.controller;
 
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.mockito.InjectMock;
+import org.acme.recipe.applicaiton.payload.CreateRecipeRequest;
 import org.acme.recipe.domain.model.Recipe;
 import org.acme.recipe.domain.service.RecipeService;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.acme.recipe.common.Utils.marshalToJson;
 import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -43,6 +45,47 @@ class RecipeControllerTest {
            .body("cost", equalTo(1000));
 
       verify(recipeService).getRecipe(1);
+  }
+
+  @Test
+  void test_POSTでリクエストしてレシピが登録できる事() {
+
+    when(recipeService.createRecipe(Recipe.builder()
+                                          .title("チキンカレー")
+                                          .makingTime("45分")
+                                          .serves("5人")
+                                          .ingredients("玉ねぎ,肉,スパイス")
+                                          .cost(450)
+                                          .build()))
+        .thenReturn(Recipe.builder()
+                          .id(1)
+                          .title("チキンカレー")
+                          .makingTime("45分")
+                          .serves("5人")
+                          .ingredients("玉ねぎ,肉,スパイス")
+                          .cost(450)
+                          .build());
+
+
+    given()
+        .when()
+        .contentType("application/json")
+        .body(marshalToJson(CreateRecipeRequest.builder()
+                                               .title("チキンカレー")
+                                               .makingTime("45分")
+                                               .serves("5人")
+                                               .ingredients("玉ねぎ,肉,スパイス")
+                                               .cost(450)
+                                               .build()))
+        .post("/recipe")
+        .then()
+        .statusCode(200)
+        .body("message", equalTo("Recipe successfully created!"))
+        .body("title", equalTo("チキンカレー"))
+        .body("making_time", equalTo("45分"))
+        .body("serves", equalTo("5人"))
+        .body("ingredients", equalTo("玉ねぎ,肉,スパイス"))
+        .body("cost", equalTo(450));
   }
 
 }

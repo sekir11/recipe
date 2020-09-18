@@ -19,4 +19,13 @@ public interface RecipeService {
    * @return 取得したレシピ
    */
   Recipe getRecipe(Integer recipeId);
+
+
+  /**
+   * 指定したレシピを登録するためのエンドポイントです
+   *
+   * @param recipe 登録したいレシピのドメインモデル
+   * @return 登録したレシピ
+   */
+  Recipe createRecipe(Recipe recipe);
 }

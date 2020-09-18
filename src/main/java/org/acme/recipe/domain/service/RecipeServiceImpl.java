@@ -27,4 +27,9 @@ public class RecipeServiceImpl implements RecipeService {
   public Recipe getRecipe(Integer recipeId) {
     return null;
   }
+
+  @Override
+  public Recipe createRecipe(Recipe recipe) {
+    return null;
+  }
 }

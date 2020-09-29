@@ -12,6 +12,11 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import static com.ninja_squad.dbsetup.Operations.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,8 +25,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @QuarkusTest
 class RecipeServiceImplTest {
 
-  @InjectMocks
-  RecipeService target;
+  @Inject
+  RecipeServiceImpl target;
 
   public static final Operation DELETE_RECIPES = deleteAllFrom("recipes");
   public static final Operation INSERT_RECIPES
@@ -73,4 +78,28 @@ class RecipeServiceImplTest {
 
     assertEquals(actual, expected);
   }
+
+  @Test
+  void test_指定したレシピを正常に登録できる事() {
+
+    Recipe actual = target.createRecipe(Recipe.builder()
+                                              .title("チキンカレー")
+                                              .makingTime("45分")
+                                              .serves("5人")
+                                              .ingredients("玉ねぎ,肉,スパイス")
+                                              .cost(450)
+                                              .build());
+    Recipe expected = Recipe.builder()
+                            .id(3)
+                            .title("チキンカレー")
+                            .makingTime("45分")
+                            .serves("5人")
+                            .ingredients("玉ねぎ,肉,スパイス")
+                            .cost(450)
+                            .build();
+
+    assertEquals(expected, actual);
+  }
+
+
 }

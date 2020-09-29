@@ -7,10 +7,13 @@ package org.acme.recipe.domain.service;
 
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.acme.recipe.domain.mapper.RecipeEntityMapper;
 import org.acme.recipe.domain.model.Recipe;
+import org.acme.recipe.integration.entity.RecipeEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 
 /**
  * {@link RecipeService} の実装クラス。
@@ -29,7 +32,10 @@ public class RecipeServiceImpl implements RecipeService {
   }
 
   @Override
+  @Transactional
   public Recipe createRecipe(Recipe recipe) {
-    return null;
+    RecipeEntity recipeEntity = RecipeEntityMapper.toEntity(recipe);
+    recipeEntity.persist();
+    return RecipeEntityMapper.fromEntity(recipeEntity);
   }
 }

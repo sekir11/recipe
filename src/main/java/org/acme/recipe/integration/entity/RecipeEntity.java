@@ -6,6 +6,8 @@
 package org.acme.recipe.integration.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 
 import javax.persistence.Column;
@@ -17,8 +19,9 @@ import javax.persistence.Table;
 import java.sql.Timestamp;
 
 @Entity
-@Getter
 @Table(name = "recipes")
+@Data
+//@Builder
 public class RecipeEntity extends PanacheEntityBase {
 
   @Id

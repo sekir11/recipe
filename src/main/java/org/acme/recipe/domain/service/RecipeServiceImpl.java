@@ -12,14 +12,12 @@ import org.acme.recipe.domain.model.Recipe;
 import org.acme.recipe.integration.entity.RecipeEntity;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 /**
  * {@link RecipeService} の実装クラス。
  */
-@RequiredArgsConstructor(onConstructor = @__({@Inject}))
-//@NoArgsConstructor
+@NoArgsConstructor
 @ApplicationScoped
 public class RecipeServiceImpl implements RecipeService {
 

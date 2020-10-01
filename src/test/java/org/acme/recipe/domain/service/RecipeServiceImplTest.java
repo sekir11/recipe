@@ -3,20 +3,14 @@ package org.acme.recipe.domain.service;
 import com.ninja_squad.dbsetup.DbSetup;
 import com.ninja_squad.dbsetup.destination.DriverManagerDestination;
 import com.ninja_squad.dbsetup.operation.Operation;
-import io.quarkus.test.Mock;
 import io.quarkus.test.junit.QuarkusTest;
 import org.acme.recipe.domain.model.Recipe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import static com.ninja_squad.dbsetup.Operations.*;
 import static org.junit.jupiter.api.Assertions.*;

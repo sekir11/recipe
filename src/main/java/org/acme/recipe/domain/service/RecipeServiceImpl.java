@@ -26,9 +26,13 @@ public class RecipeServiceImpl implements RecipeService {
    */
   @Override
   public Recipe getRecipe(Integer recipeId) {
-    return null;
+    RecipeEntity recipeEntity = RecipeEntity.findById(recipeId);
+    return RecipeEntityMapper.fromEntity(recipeEntity);
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @Transactional
   public Recipe createRecipe(Recipe recipe) {

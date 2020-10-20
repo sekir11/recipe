@@ -21,7 +21,6 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "recipes")
 @Data
-//@Builder
 public class RecipeEntity extends PanacheEntityBase {
 
   @Id

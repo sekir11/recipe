@@ -2,9 +2,9 @@
 version: '2'
 
 services:
-  mssql.recipe:
+  mssql.book:
     image: "docker.artifact-dev.ark.bb.local/labo/mssql:2017-CU14"
-    container_name: mssql.recipe
+    container_name: mssql.book
     environment: 
       - ACCEPT_EULA=Y
       - SA_PASSWORD=welcome1#

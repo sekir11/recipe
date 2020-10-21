@@ -1,4 +1,4 @@
-CREATE TABLE recipes (
+CREATE TABLE books (
   id                integer          PRIMARY KEY,
   title             nvarchar(100),
   making_time       nvarchar(100),

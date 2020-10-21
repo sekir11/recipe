@@ -3,13 +3,13 @@
  *
  */
 
-package org.acme.recipe.applicaiton.payload;
+package org.acme.book.applicaiton.payload;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.acme.recipe.domain.model.Recipe;
+import org.acme.book.domain.model.Book;
 
 import javax.json.bind.annotation.JsonbProperty;
 
@@ -17,7 +17,10 @@ import javax.json.bind.annotation.JsonbProperty;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateRecipeRequest {
+public class BookResponse {
+
+  @JsonbProperty(value = "id")
+  private Integer id;
 
   @JsonbProperty(value = "title")
   private String title;
@@ -34,13 +37,14 @@ public class CreateRecipeRequest {
   @JsonbProperty(value = "cost")
   private Integer cost;
 
-  public Recipe toModel() {
-    return Recipe.builder()
-                 .title(title)
-                 .makingTime(makingTime)
-                 .serves(serves)
-                 .ingredients(ingredients)
-                 .cost(cost)
-                 .build();
+  public static BookResponse of(Book book) {
+    return BookResponse.builder()
+                       .id(book.getId())
+                       .title(book.getTitle())
+                       .makingTime(book.getMakingTime())
+                       .serves(book.getServes())
+                       .ingredients(book.getIngredients())
+                       .cost(book.getCost())
+                       .build();
   }
 }

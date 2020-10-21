@@ -3,7 +3,7 @@
  *
  */
 
-package org.acme.recipe.domain.model;
+package org.acme.book.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Recipe {
+public class Book {
 
   private Integer id;
 

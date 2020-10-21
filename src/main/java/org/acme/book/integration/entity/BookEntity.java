@@ -3,12 +3,11 @@
  *
  */
 
-package org.acme.recipe.integration.entity;
+package org.acme.book.integration.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,9 +18,9 @@ import javax.persistence.Table;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "recipes")
+@Table(name = "books")
 @Data
-public class RecipeEntity extends PanacheEntityBase {
+public class BookEntity extends PanacheEntityBase {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

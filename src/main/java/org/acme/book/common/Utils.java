@@ -3,7 +3,7 @@
  *
  */
 
-package org.acme.recipe.common;
+package org.acme.book.common;
 
 import lombok.extern.slf4j.Slf4j;
 

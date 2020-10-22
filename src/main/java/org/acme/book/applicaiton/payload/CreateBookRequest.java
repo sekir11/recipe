@@ -43,4 +43,15 @@ public class CreateBookRequest {
                .cost(cost)
                .build();
   }
+
+  public Book toModel(Integer id) {
+    return Book.builder()
+               .id(id)
+               .title(title)
+               .makingTime(makingTime)
+               .serves(serves)
+               .ingredients(ingredients)
+               .cost(cost)
+               .build();
+  }
 }

@@ -12,6 +12,8 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import static java.util.Objects.isNull;
+
 /**
  * 本のドメインモデルとエンティティを相互に変換を行うマッパー。
  */
@@ -27,6 +29,7 @@ public final class BookEntityMapper {
     DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(LOCAL_DATE_TIME_FORMAT);
 
     BookEntity bookEntity = new BookEntity();
+    bookEntity.id = book.getId();
     bookEntity.cost = book.getCost();
     bookEntity.title = book.getTitle();
     bookEntity.serves = book.getServes();

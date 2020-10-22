@@ -20,7 +20,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "books")
 @Data
-public class BookEntity extends PanacheEntityBase {
+public class BookEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

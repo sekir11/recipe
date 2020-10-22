@@ -54,7 +54,7 @@ public class BookController {
   @PATCH
   @Path("/{id}")
   public void updateBook(@PathParam("id") Integer id, CreateBookRequest request) {
-    bookService.updateBook(request.toModel());
+    bookService.updateBook(request.toModel(id));
   }
 
 

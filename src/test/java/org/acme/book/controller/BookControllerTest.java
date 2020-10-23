@@ -20,14 +20,12 @@ class BookControllerTest {
   BookService bookService;
 
   @Test
-  void test_指定したidでレシピを取得できる() {
+  void test_指定したidで書籍を取得できる() {
 
     when(bookService.getBook(1)).thenReturn(Book.builder()
                                                 .id(1)
                                                 .title("チキンカレー")
-                                                .makingTime("45分")
-                                                .serves("4人")
-                                                .ingredients("玉ねぎ,肉,スパイス")
+                                                .author("著者1")
                                                 .cost(1000)
                                                 .build());
 
@@ -39,30 +37,24 @@ class BookControllerTest {
            .statusCode(200)
            .body("id", equalTo(1))
            .body("title", equalTo("チキンカレー"))
-           .body("making_time", equalTo("45分"))
-           .body("serves", equalTo("4人"))
-           .body("ingredients", equalTo("玉ねぎ,肉,スパイス"))
+           .body("author", equalTo("著者1"))
            .body("cost", equalTo(1000));
 
       verify(bookService).getBook(1);
   }
 
   @Test
-  void test_POSTでリクエストしてレシピが登録できる事() {
+  void test_POSTでリクエストして書籍が登録できる事() {
 
     when(bookService.createBook(Book.builder()
                                     .title("チキンカレー")
-                                    .makingTime("45分")
-                                    .serves("5人")
-                                    .ingredients("玉ねぎ,肉,スパイス")
+                                    .author("著者1")
                                     .cost(450)
                                     .build()))
         .thenReturn(Book.builder()
                         .id(1)
                         .title("チキンカレー")
-                        .makingTime("45分")
-                        .serves("5人")
-                        .ingredients("玉ねぎ,肉,スパイス")
+                        .author("著者1")
                         .cost(450)
                         .build());
 
@@ -72,9 +64,7 @@ class BookControllerTest {
         .contentType("application/json")
         .body(marshalToJson(CreateBookRequest.builder()
                                              .title("チキンカレー")
-                                             .makingTime("45分")
-                                             .serves("5人")
-                                             .ingredients("玉ねぎ,肉,スパイス")
+                                             .author("著者1")
                                              .cost(450)
                                              .build()))
         .post("/books")
@@ -82,9 +72,7 @@ class BookControllerTest {
         .statusCode(200)
         .body("message", equalTo("Book successfully created!"))
         .body("title", equalTo("チキンカレー"))
-        .body("making_time", equalTo("45分"))
-        .body("serves", equalTo("5人"))
-        .body("ingredients", equalTo("玉ねぎ,肉,スパイス"))
+        .body("author", equalTo("著者1"))
         .body("cost", equalTo(450));
   }
 

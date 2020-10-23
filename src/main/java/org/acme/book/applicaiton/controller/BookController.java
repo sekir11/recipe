@@ -7,6 +7,7 @@ import org.acme.book.domain.model.Book;
 import org.acme.book.domain.service.BookService;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -17,7 +18,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@ApplicationScoped
+@RequestScoped
 @Path("/books")
 public class BookController {
 

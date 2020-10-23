@@ -22,14 +22,8 @@ public class CreateBookRequest {
   @JsonbProperty(value = "title")
   private String title;
 
-  @JsonbProperty(value = "making_time")
-  private String makingTime;
-
-  @JsonbProperty(value = "serves")
-  private String serves;
-
-  @JsonbProperty(value = "ingredients")
-  private String ingredients;
+  @JsonbProperty(value = "author")
+  private String author;
 
   @JsonbProperty(value = "cost")
   private Integer cost;
@@ -37,9 +31,7 @@ public class CreateBookRequest {
   public Book toModel() {
     return Book.builder()
                .title(title)
-               .makingTime(makingTime)
-               .serves(serves)
-               .ingredients(ingredients)
+               .author(author)
                .cost(cost)
                .build();
   }
@@ -48,9 +40,7 @@ public class CreateBookRequest {
     return Book.builder()
                .id(id)
                .title(title)
-               .makingTime(makingTime)
-               .serves(serves)
-               .ingredients(ingredients)
+               .author(author)
                .cost(cost)
                .build();
   }

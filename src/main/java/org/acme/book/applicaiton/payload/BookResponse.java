@@ -25,14 +25,8 @@ public class BookResponse {
   @JsonbProperty(value = "title")
   private String title;
 
-  @JsonbProperty(value = "making_time")
-  private String makingTime;
-
-  @JsonbProperty(value = "serves")
-  private String serves;
-
-  @JsonbProperty(value = "ingredients")
-  private String ingredients;
+  @JsonbProperty(value = "author")
+  private String author;
 
   @JsonbProperty(value = "cost")
   private Integer cost;
@@ -41,9 +35,7 @@ public class BookResponse {
     return BookResponse.builder()
                        .id(book.getId())
                        .title(book.getTitle())
-                       .makingTime(book.getMakingTime())
-                       .serves(book.getServes())
-                       .ingredients(book.getIngredients())
+                       .author(book.getAuthor())
                        .cost(book.getCost())
                        .build();
   }

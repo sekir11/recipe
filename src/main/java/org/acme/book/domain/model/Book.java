@@ -20,11 +20,13 @@ public class Book {
 
   private String title;
 
-  private String makingTime;
-
-  private String serves;
-
-  private String ingredients;
+  private String author;
 
   private Integer cost;
 }
+
+
+
+
+
+

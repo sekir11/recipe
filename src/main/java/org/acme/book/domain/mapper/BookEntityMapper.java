@@ -12,8 +12,6 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import static java.util.Objects.isNull;
-
 /**
  * 本のドメインモデルとエンティティを相互に変換を行うマッパー。
  */
@@ -32,9 +30,7 @@ public final class BookEntityMapper {
     bookEntity.id = book.getId();
     bookEntity.cost = book.getCost();
     bookEntity.title = book.getTitle();
-    bookEntity.serves = book.getServes();
-    bookEntity.ingredients = book.getIngredients();
-    bookEntity.makingTime = book.getMakingTime();
+    bookEntity.author = book.getAuthor();
     bookEntity.createdAt = Timestamp.valueOf(LocalDateTime.now().format(dateTimeFormatter));
     bookEntity.updatedAt = Timestamp.valueOf(LocalDateTime.now().format(dateTimeFormatter));
 
@@ -46,9 +42,7 @@ public final class BookEntityMapper {
     return Book.builder()
                .id(bookEntity.getId())
                .title(bookEntity.getTitle())
-               .makingTime(bookEntity.getMakingTime())
-               .serves(bookEntity.getServes())
-               .ingredients(bookEntity.getIngredients())
+               .author(bookEntity.getAuthor())
                .cost(bookEntity.getCost())
                .build();
   }

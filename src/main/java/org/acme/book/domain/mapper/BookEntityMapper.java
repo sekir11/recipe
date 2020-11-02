@@ -27,12 +27,12 @@ public final class BookEntityMapper {
     DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(LOCAL_DATE_TIME_FORMAT);
 
     BookEntity bookEntity = new BookEntity();
-    bookEntity.id = book.getId();
-    bookEntity.cost = book.getCost();
-    bookEntity.title = book.getTitle();
-    bookEntity.author = book.getAuthor();
-    bookEntity.createdAt = Timestamp.valueOf(LocalDateTime.now().format(dateTimeFormatter));
-    bookEntity.updatedAt = Timestamp.valueOf(LocalDateTime.now().format(dateTimeFormatter));
+    bookEntity.setId(book.getId());
+    bookEntity.setCost(book.getCost());
+    bookEntity.setTitle(book.getTitle());
+    bookEntity.setAuthor(book.getAuthor());
+    bookEntity.setCreatedAt(Timestamp.valueOf(LocalDateTime.now().format(dateTimeFormatter)));
+    bookEntity.setUpdatedAt(Timestamp.valueOf(LocalDateTime.now().format(dateTimeFormatter)));
 
     return bookEntity;
   }

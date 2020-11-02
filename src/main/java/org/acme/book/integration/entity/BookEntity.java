@@ -5,7 +5,6 @@
 
 package org.acme.book.integration.entity;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -19,25 +18,28 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "books")
 @Data
-public class BookEntity extends PanacheEntityBase {
+public class BookEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
-  public Integer id;
+  private Integer id;
 
   @Column(name = "title")
-  public String title;
+  private String title;
 
   @Column(name = "author")
-  public String author;
+  private String author;
 
   @Column(name = "cost")
-  public Integer cost;
+  private Integer cost;
 
   @Column(name = "created_at")
-  public Timestamp createdAt;
+  private Timestamp createdAt;
 
   @Column(name = "updated_at")
-  public Timestamp updatedAt;
+  private Timestamp updatedAt;
 }
+
+
+

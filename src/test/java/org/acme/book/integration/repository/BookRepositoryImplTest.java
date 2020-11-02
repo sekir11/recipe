@@ -71,5 +71,46 @@ public class BookRepositoryImplTest {
     assertEquals(actual, expected);
   }
 
+  @Test
+  void 書籍登録ができる() {
+    target.createBook(Book.builder()
+                          .title("チキンカレー")
+                          .author("著者1")
+                          .cost(1000)
+                          .build());
+
+    Book actual = target.getById(3);
+
+    Book expected = Book.builder()
+                        .id(3)
+                        .title("チキンカレー")
+                        .author("著者1")
+                        .cost(1000)
+                        .build();
+
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  void 書籍編集ができる() {
+    target.updateBook(Book.builder()
+                          .id(1)
+                          .title("チキンカレーーーー")
+                          .author("著者1111")
+                          .cost(100000)
+                          .build());
+
+    Book actual = target.getById(1);
+
+    Book expected = Book.builder()
+                        .id(1)
+                        .title("チキンカレーーーー")
+                        .author("著者1111")
+                        .cost(100000)
+                        .build();
+
+    assertEquals(expected, actual);
+  }
+
 
 }

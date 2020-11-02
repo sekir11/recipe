@@ -5,6 +5,7 @@ import org.acme.book.domain.repository.BookRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -23,7 +24,7 @@ class BookServiceImplTest {
 
   @BeforeEach
   void setUp() {
-    MockitoAnnotations.initMocks(this);
+    MockitoAnnotations.openMocks(this);
   }
 
   @Test
@@ -44,6 +45,9 @@ class BookServiceImplTest {
 
     assertEquals(actual, expected);
   }
+
+
+
 
   @Test
   void test_指定した書籍を正常に登録できる事() {
